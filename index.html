@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moniemarket - Monnify</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+<script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
+<style>
+        /* Custom CSS for modal and header styling */
+        body {
+            font-family: Inter;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .modal2 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 100%;
+            margin-top: 40vh;
+            height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-content2 {
+            background-color: white;
+            width: 100%;
+            margin-top: 40vh;
+            height: 60vh;
+            overflow-y: auto;
+        }
+
+        .close-button {
+            position: relative;
+            top: 30vh;
+            float: right;
+            margin: 10px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-button2 {
+            position: relative;
+            top: 30vh;
+            float: right;
+            margin: 10px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Custom CSS for header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: solid 1px #E7EAF1
+        }
+
+        .header-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-menu-link {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-menu-link img {
+            width: 24px;
+            margin-right: 5px;
+        }
+
+        .img-seye {
+            height: 30px;
+        }
+
+        /* Custom CSS for product cards */
+        .product-card {
+            position: relative;
+        }
+
+        .product-icon {
+            background-color: #f4f4f4;
+            /* Light gray background */
+            border-radius: 16%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            /* Center horizontally */
+        }
+
+        .product-icon img {
+            max-width: 80%;
+            /* Adjust size as needed */
+        }
+
+        .icon-xs {
+            height: 200px;
+            max-height: 300px;
+        }
+
+        .seye-icon {
+            right: 18px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            color: #C3CAD5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .icon-md {
+            height: 300px
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            color: #C3CAD5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pr-image {
+            width: 300px;
+
+        }
+    </style>
+</head>
+<body class="bg-white-100">
+
+<div class="header">
+<div class="header-logo">
+<img src="assets/logo.svg" class="img-seye my-2" alt="Logo">
+</div>
+<div class="header-menu">
+<a href="#" class="header-menu-link">
+<img src="assets/cart.svg" class="img-seye my-2" alt="cart">
+</a>
+<a href="#" class="header-menu-link">
+<img src="assets/user.svg" class="img-seye my-2" alt="User">
+</a>
+</div>
+</div>
+<div class="md:mx-8 md:my-8">
+<div class="mx-4 mt-4">
+<div class="px-4">
+<h1 class="font-bold text-lg">New Arrivals</h1>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4 p-4">
+
+<div data-product_id="P00001" class="col-span-2 md:col-span-1 product-card hover:drop-shadow-md  cursor-pointer">
+<div class="product-icon h-48 md:h-60 lg:h-80 p-4 md:p-8  p-3">
+<img src="assets/bag.svg" class="md:w-60 lg:w-80 pr-image hover:scale-105" alt="Product 1 Icon">
+<div class="heart-icon text-lg hover:text-rose-700  hover:animate-pulse	">&hearts;</div>
+</div>
+<div class="pt-4">
+<p class="text-xs md:text-sm font-light	">Stay Stylish</p>
+<p class="text-sm md:text-base font-black	">Multipurpose Tote Bag</p>
+</div>
+</div>
+
+<div data-product_id="P00003" class="col-span-2 md:col-span-1 product-card hover:drop-shadow-md  cursor-pointer">
+<div class="product-icon h-48 md:h-60 lg:h-80 p-4 md:p-8  p-3">
+<img src="assets/leather.svg" class="md:w-60 lg:w-80 pr-image hover:scale-105" alt="Product 1 Icon">
+<div class="heart-icon text-lg hover:text-rose-700  hover:animate-pulse	">&hearts;</div>
+</div>
+<div class="pt-4">
+<p class="text-xs md:text-sm font-light	">Creatives Delight</p>
+<p class="text-sm md:text-base font-black	">Leather Notepad</p>
+</div>
+</div>
+
+<div data-product_id="P00004" class="col-span-2 md:col-span-1 product-card hover:drop-shadow-md  cursor-pointer">
+<div class="product-icon h-48 md:h-60 lg:h-80 p-4 md:p-8  p-3">
+<img src="assets/stickers.svg" class="md:w-60 lg:w-80 pr-image hover:scale-105" alt="Product 1 Icon">
+<div class="heart-icon text-lg hover:text-rose-700  hover:animate-pulse	">&hearts;</div>
+</div>
+<div class="pt-4">
+<p class="text-xs md:text-sm font-light	">Creatives Delight</p>
+<p class="text-sm md:text-base font-black	">Vision Stickers</p>
+</div>
+</div>
+
+<div data-product_id="P00002" class="col-span-2 md:col-span-1 product-card hover:drop-shadow-md  cursor-pointer">
+<div class="product-icon h-48 md:h-60 lg:h-80 p-4 md:p-8  p-3">
+<img src="assets/cake.svg" class="md:w-60 lg:w-80 pr-image hover:scale-105" alt="Product 1 Icon">
+<div class="heart-icon text-lg hover:text-rose-700  hover:animate-pulse	">&hearts;</div>
+</div>
+<div class="pt-4">
+<p class="text-xs md:text-sm font-light	">Drippy's Corner</p>
+<p class="text-sm md:text-base font-black	">Dream’s Cake</p>
+</div>
+</div>
+
+</div>
+
+<div class="modal">
+<button style=" z-index: 9999999; " class="close-button text-gray-500 text-3xl">&times;</button>
+<div class="modal-content rounded-lg p-5 pt-10 ">
+
+<div style="position: absolute; top: 5%; left: 0;
+                right: 0;
+                margin: 0 auto;  z-index: 990000;  margin-bottom:-40vh">
+<div align="center" class="hover:drop-shadow-md hover:scale-105" style="height: 300px">
+<img id="prod_image" class="object-scale-down" style="height:300px" src />
+</div>
+</div>
+<div style=" background: #F0F5F7; z-index: 999000;" class="flex items-center justify-between  mt-10 rounded  p-4 w-full h-16">
+<div class="flex-grow">
+<p class="text-sm font-semibold" id="prod_category" style="color: #666666; ">Product Title</p>
+<p class="text-gray-500" id="prod_title">Product Category</p>
+</div>
+<div class="flex space-x-4">
+<div class="seye-icon share-icon text-lg hover:text-rose-700 p-1 hover:animate-pulse	">
+<img src="assets/share.svg" />
+</div>
+<div class="seye-icon text-lg hover:text-rose-700  hover:animate-pulse	">&hearts;</div>
+</div>
+</div>
+<div class="pt-4 mt-4 mb-9">
+<p class="text-xs md:text-sm font-light	" style="color: #666666; ">Item Description</p>
+<p id="prod_desc" class="text-sm md:text-base font-black	">Dream’s Cake</p>
+</div>
+<button style="background: #0361F0;" class="pay-now text-base w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:drop-shadow-md hover:scale-102">
+Proceed to Checkout
+</button>
+<div class="content-center mt-5 mb-3" align="center">
+<img src="assets/poweredby.svg" class="h-3.5" />
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal2">
+<button style=" z-index: 9999999; " class="close-button2 text-gray-500 text-3xl">&times;</button>
+<div class="modal-content2 rounded-lg p-5 pt-10 ">
+<div class="px-4 mb-5" align="center">
+<h1 class="font-bold text-lg">Click to Share</h1>
+</div>
+
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_linkedin"></a>
+<a class="a2a_button_facebook_messenger"></a>
+<a class="a2a_button_copy_link"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_x"></a>
+</div>
+<script>
+                var a2a_config = a2a_config || {};
+                a2a_config.onclick = 1;
+            </script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        const products =
+            [{
+                "image": "bag-modal.svg",
+                "category": "Stay Stylish",
+                "title": "Multipurpose Tote Bag",
+                "description": "Carry your dreams with you. Suitable for casual outings, carrying everyday items, and, of course, your dreams",
+                "price": "2000",
+                "product_id": "P00001"
+
+            }, {
+                "image": "cake.svg",
+                "category": "Drippy's Corner",
+                "title": "Dream's Cake",
+                "description": "Indulge in the Fintech Dream with Moniepoint Cupcakes. Savor the sweet journey with our delectable cupcakes.",
+                "price": "2000",
+                "product_id": "P00002"
+
+            }, {
+                "image": "leather.svg",
+                "category": "Creatives Delight",
+                "title": "Leather Notepad",
+                "description": "Join the Fintech Dream with Moniepoint Notepad. Get ready to jot down your aspirations, ideas, and plans in style with this motivational notepad.",
+                "price": "2000",
+                "product_id": "P00003"
+
+            }, {
+                "image": "stickers.svg",
+                "category": "Creatives Delight",
+                "title": "Vision Stickers",
+                "description": "Join the Fintech Dream with Moniepoint Stickers. Express our dreams and aspirations with these stylish stickers, designed to inspire and motivate.",
+                "price": "2000",
+                "product_id": "P00004"
+
+            }
+
+            ]
+
+
+        $(document).ready(function () {
+
+
+
+
+            $('.pay-now').click(function () {
+
+                var product = JSON.parse(localStorage.getItem("product"));
+                payWithMonnify(product.title, product.price)
+
+            })
+
+
+            $('.product-card').click(function () {
+                const product_id = $(this).data("product_id"); // Get the data-product_id attribute
+                const product = products.find(item => item.product_id === product_id); // Search for the product with the matching product_id
+                if (product) {
+                    console.log(product); // Log the found product object
+                    $('#prod_image').attr("src", "assets/" + product.image);
+                    $('#prod_desc').text(product.description)
+                    $('#prod_category').text(product.category)
+                    $('#prod_title').text(product.title)
+
+                    localStorage.setItem("product", JSON.stringify(product));
+
+
+                    $('.modal').show();
+                } else {
+                    console.log("Product not found");
+                }
+            });
+
+            $('.share-icon').click(function () {
+
+                $('.modal').hide();
+                $('.modal2').show();
+
+            });
+
+            $('.close-button').click(function () {
+                $('.modal').hide();
+            });
+
+            $('.close-button2').click(function () {
+                $('.modal2').hide();
+            });
+        });
+
+
+        function payWithMonnify(payfor = "Product", amountX) {
+            MonnifySDK.initialize({
+                amount: amountX,
+                currency: "NGN",
+                reference: new String((new Date()).getTime()),
+                customerFullName: "Damilare Ogunnaike",
+                customerEmail: "customer@monnify.com",
+                apiKey: "MK_TEST_SAF7HR5F3F",
+                contractCode: "4934121686",
+                paymentDescription: "Payment " + payfor,
+                metadata: {
+                    // "name": "Payment",
+                    // "age": 45
+                },
+                onLoadStart: () => {
+                    console.log("loading has started");
+                },
+                onLoadComplete: () => {
+                    console.log("SDK is UP");
+                },
+                onComplete: function (response) {
+                    //Implement what happens when the transaction is completed.
+                    console.log(response);
+                },
+                onClose: function (data) {
+                    //Implement what should happen when the modal is closed here
+                    console.log(data);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
