@@ -42,6 +42,6 @@ We'd like to thank the following contributors for their contributions to this pr
 
 ## Feedback
 
-If you have any feedback or questions, please feel free to [open an issue](https://github.com/monnify/monnify-sample-webhook-nodejs/issues).
+If you have any feedback or questions, please feel free to [open an issue](https://github.com/monnify/samplestore-using-websdk-monnify/issues).
 
 Enjoy exploring Monnify WebSDK, Moniemarket and the Monnify payment experience!
